@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_175308) do
+ActiveRecord::Schema.define(version: 2019_12_19_114635) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 2019_12_18_175308) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["unity_id"], name: "index_addresses_on_unity_id"
+  end
+
+  create_table "blogs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "courses", force: :cascade do |t|
@@ -39,6 +44,23 @@ ActiveRecord::Schema.define(version: 2019_12_18_175308) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["unity_id"], name: "index_phones_on_unity_id"
+  end
+
+  create_table "post_tags", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_tags_on_post_id"
+    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "body"
+    t.integer "blog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_posts_on_blog_id"
   end
 
   create_table "pre_registrations", force: :cascade do |t|
@@ -67,6 +89,12 @@ ActiveRecord::Schema.define(version: 2019_12_18_175308) do
     t.integer "unity_id"
     t.index ["sn_type_id"], name: "index_social_networks_on_sn_type_id"
     t.index ["unity_id"], name: "index_social_networks_on_unity_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "unities", force: :cascade do |t|

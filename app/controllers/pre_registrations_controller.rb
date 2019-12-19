@@ -16,6 +16,7 @@ class PreRegistrationsController < ApplicationController
   # POST /pre_registrations
   def create
     @pre_registration = PreRegistration.new(pre_registration_params)
+    @pre_registration.unity_id = Unity.last.id
 
     if @pre_registration.save
       render json: @pre_registration, status: :created, location: @pre_registration

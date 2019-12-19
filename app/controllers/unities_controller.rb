@@ -46,6 +46,6 @@ class UnitiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def unity_params
-      params.require(:unity).permit(:name, :emails, :site)
+      params.require(:unity).permit(:name, :email, :site)
     end
 end

@@ -16,6 +16,7 @@ class SocialNetworksController < ApplicationController
   # POST /social_networks
   def create
     @social_network = SocialNetwork.new(social_network_params)
+    @social_network.unity_id = Unity.last.id
 
     if @social_network.save
       render json: @social_network, status: :created, location: @social_network

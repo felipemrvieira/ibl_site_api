@@ -16,6 +16,7 @@ class PhonesController < ApplicationController
   # POST /phones
   def create
     @phone = Phone.new(phone_params)
+    @phone.unity_id = Unity.last.id
 
     if @phone.save
       render json: @phone, status: :created, location: @phone

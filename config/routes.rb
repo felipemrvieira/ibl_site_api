@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :post_tags
+  resources :tags
+  resources :posts
+  resources :blogs
   resources :pre_registrations
   resources :unity_types
   resources :social_networks

@@ -16,6 +16,7 @@ class AddressesController < ApplicationController
   # POST /addresses
   def create
     @address = Address.new(address_params)
+    @address.unity_id = Unity.last.id
 
     if @address.save
       render json: @address, status: :created, location: @address
